@@ -5,11 +5,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
+
 public class HelloController implements Initializable {
     @FXML
     public TextField SalarioTxt;
@@ -62,7 +68,7 @@ public class HelloController implements Initializable {
         alert.setTitle("IMPOSIBLE AÑADIR TRABAJADOR");
         alert.show();
     }
-    public void conexionBasedDeDatos()  {
+    public void conexionBasedDeDatos(ArrayList<String> colum)  {
         String url = "jdbc:mysql://localhost:3306/gestortrabajadores";
         String usuario = "root";
         String contrasenya = "root";
@@ -70,6 +76,12 @@ public class HelloController implements Initializable {
 
         try {
             conexion = DriverManager.getConnection(url, usuario, contrasenya);
+            if (conexion != null) {
+                PreparedStatement ps = conexion.prepareStatement("INSERT INTO empleado (nombre, puesto, salario, fecha) VALUES(?,?,?,NOW())");
+                ps.setString(1, colum.getFirst());
+                ps.setString(2,colum.get(1));
+                ps.setString(3, colum.get(2));
+            }
         } catch (SQLException e) {
             System.out.println("Error al acceder");
         }
@@ -83,8 +95,24 @@ public class HelloController implements Initializable {
                 {
                     System.out.println("Error al cerrar");
                 }
-
             }
+        }
+    }
+    public void linea() {
+        File miFichero = new File("src/main/resources/com/example/gestorenpleadosinigocembo/ArchivosTXT/trabajadores.txt");
+        try {
+            Scanner miScaner = new Scanner(miFichero);
+            while (miScaner.hasNext())
+            {
+                String[] trabajador;
+                trabajador = miScaner.next().split(";");
+                String Nombre =trabajador[0];
+                String Puesto =trabajador[1];
+                int Salario = Integer.parseInt(trabajador[2]);
+                new Trabajador(Nombre,Puesto,Salario);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("No se encuentra el archivo");
         }
     }
 }
