@@ -1,5 +1,7 @@
 package com.example.gestorenpleadosinigocembo;
 
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Trabajador {
@@ -41,8 +43,11 @@ public class Trabajador {
         this.nombre = nombre;
     }
 
-    public void aniadir()
+    /*public void aniadir(ArrayList<String> colum)
     {
-
-    }
+        PreparedStatement ps = conexion.prepareStatement("INSERT INTO empleado (nombre, puesto, salario, fecha) VALUES(?,?,?,NOW())");
+        ps.setString(1, colum.getFirst());
+        ps.setString(2,colum.get(1));
+        ps.setString(3, colum.get(2));
+    }*/
 }

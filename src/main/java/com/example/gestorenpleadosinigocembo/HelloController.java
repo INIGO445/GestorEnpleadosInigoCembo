@@ -68,7 +68,7 @@ public class HelloController implements Initializable {
         alert.setTitle("IMPOSIBLE AÑADIR TRABAJADOR");
         alert.show();
     }
-    public void conexionBasedDeDatos(ArrayList<String> colum)  {
+    public void conexionBasedDeDatos()  {
         String url = "jdbc:mysql://localhost:3306/gestortrabajadores";
         String usuario = "root";
         String contrasenya = "root";
@@ -77,10 +77,6 @@ public class HelloController implements Initializable {
         try {
             conexion = DriverManager.getConnection(url, usuario, contrasenya);
             if (conexion != null) {
-                PreparedStatement ps = conexion.prepareStatement("INSERT INTO empleado (nombre, puesto, salario, fecha) VALUES(?,?,?,NOW())");
-                ps.setString(1, colum.getFirst());
-                ps.setString(2,colum.get(1));
-                ps.setString(3, colum.get(2));
             }
         } catch (SQLException e) {
             System.out.println("Error al acceder");
@@ -105,10 +101,11 @@ public class HelloController implements Initializable {
             while (miScaner.hasNext())
             {
                 String[] trabajador;
-                trabajador = miScaner.next().split(";");
+                trabajador = miScaner.nextLine().split(";");
                 String Nombre =trabajador[0];
                 String Puesto =trabajador[1];
                 int Salario = Integer.parseInt(trabajador[2]);
+                System.out.println(Nombre + Puesto + Salario);
                 new Trabajador(Nombre,Puesto,Salario);
             }
         } catch (FileNotFoundException e) {
