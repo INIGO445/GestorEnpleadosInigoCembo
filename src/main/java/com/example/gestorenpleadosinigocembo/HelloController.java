@@ -67,7 +67,7 @@ public class HelloController implements Initializable {
     }
     public void empelado()
     {
-        if (NombreTxt.getText().isEmpty() || SalarioTxt.getText().isEmpty() || PrestosCombo.getItems().isEmpty())
+        if (NombreTxt.getText().isEmpty() || SalarioTxt.getText().isEmpty() || PrestosCombo.getValue() == null)
         {
             llenar();
         }
