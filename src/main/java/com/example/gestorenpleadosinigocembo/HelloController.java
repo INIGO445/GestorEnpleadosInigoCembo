@@ -73,8 +73,9 @@ public class HelloController implements Initializable {
         }
         else
         {
-            inserccion();
-            avisoI();
+            if (inserccion()) {
+                avisoI();
+            }
         }
     }
     public void llenar()
@@ -85,17 +86,26 @@ public class HelloController implements Initializable {
         alert.setTitle("IMPOSIBLE AÑADIR TRABAJADOR");
         alert.show();
     }
-    public void inserccion() {
+    public boolean inserccion() {
         Connection miConexion = null;
         try {
             miConexion = conexionBasedDeDatos();
             PreparedStatement statmen = miConexion.prepareStatement("INSERT INTO EMPLEADO (NOMBRE, PUESTO, SALARIO, FECHA) VALUES (?,?,?,NOW())");
             statmen.setString(1, NombreTxt.getText());
             statmen.setString(2, PrestosCombo.getValue());
-            statmen.setInt(3, Integer.parseInt(SalarioTxt.getText()));
+            try {
+                statmen.setInt(3, Integer.parseInt(SalarioTxt.getText()));
+            }
+            catch (NumberFormatException e)
+            {
+                System.out.println("Formato erroneo");
+                return false;
+            }
             statmen.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("No funciona la conexion");
+            return false;
         } finally {
             if (miConexion != null) {
                 try {
