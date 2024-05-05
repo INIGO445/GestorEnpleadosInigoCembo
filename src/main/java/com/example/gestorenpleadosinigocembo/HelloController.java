@@ -124,7 +124,7 @@ public class HelloController implements Initializable {
     }
     @FXML
     public void linea() {
-        File miFichero = new File("src/main/resources/com/example/gestorenpleadosinigocembo/ArchivosTXT/trabajadores.txt");
+        File miFichero = new File("src/main/java/Modelo/ArchivosTXT/trabajadores.txt");
         try {
             Connection miConexion = null;
             miConexion = conexionBasedDeDatos();
