@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorenpleadosinigocembo.Editar">
+   <children>
+      <VBox alignment="CENTER_LEFT" prefHeight="316.0" prefWidth="545.0" spacing="15.0">
+         <children>
+            <Label text="Nombre" />
+            <TextField fx:id="NombreTxt" prefHeight="25.0" prefWidth="246.0">
+               <VBox.margin>
+                  <Insets right="350.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Puesto" />
+            <ComboBox fx:id="PrestosCombo" prefWidth="150.0" />
+            <Label text="Salario" />
+            <TextField fx:id="SalarioTxt" alignment="TOP_LEFT" prefHeight="25.0" prefWidth="218.0">
+               <VBox.margin>
+                  <Insets right="350.0" />
+               </VBox.margin>
+            </TextField>
+            <Button fx:id="InsertarBTN" mnemonicParsing="false" onAction="#cambiar" text="Cambiar" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorenpleadosinigocembo.HelloController">
+   <children>
+      <TabPane layoutX="37.0" layoutY="37.0" prefHeight="327.0" prefWidth="528.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Nuevo Empleado">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="316.0" prefWidth="545.0" spacing="15.0">
+                           <children>
+                              <Label text="Nombre" />
+                              <TextField fx:id="NombreTxt" prefHeight="25.0" prefWidth="246.0">
+                                 <VBox.margin>
+                                    <Insets right="350.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Puesto" />
+                              <ComboBox fx:id="PrestosCombo" prefWidth="150.0" />
+                              <Label text="Salario" />
+                              <TextField fx:id="SalarioTxt" alignment="TOP_LEFT" prefHeight="25.0" prefWidth="218.0">
+                                 <VBox.margin>
+                                    <Insets right="350.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Button fx:id="InsertarBTN" mnemonicParsing="false" onAction="#empelado" text="Insertar" />
+                              <Button fx:id="basesBtn" mnemonicParsing="false" onAction="#linea" text="Cargar Datos" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Consultar">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="ListaDeEmpleadosVista" prefHeight="250.0" prefWidth="248.0" />
+                        <Button fx:id="RefrescarBtn" layoutX="92.0" layoutY="259.0" mnemonicParsing="false" onAction="#refrescar" text="Refrescar" />
+                        <Button fx:id="EditarBtn" layoutX="270.0" layoutY="225.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
+                        <Button fx:id="EliminarBtn" layoutX="413.0" layoutY="225.0" mnemonicParsing="false" onAction="#eliminacion" text="Eliminar" textFill="#fc0000">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                        <Label layoutX="270.0" layoutY="27.0" />
+                        <Label fx:id="NombreLabel" layoutX="270.0" layoutY="68.0" />
+                        <Label fx:id="PuestoLabel" layoutX="270.0" layoutY="108.0" />
+                        <Label fx:id="SalarioLabel" layoutX="270.0" layoutY="149.0" />
+                        <Label fx:id="FechaLabel" layoutX="270.0" layoutY="189.0" />
+                        <Label fx:id="IDLabel" layoutX="270.0" layoutY="27.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="216.0" layoutY="10.0" text="Gestor de Empleados">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
